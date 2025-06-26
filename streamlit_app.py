@@ -4,9 +4,16 @@ import json
 import random
 
 # Configure Gemini API
-GEMINI_API_KEY = "AIzaSyDQySB4wi3vpibUwiVFpH5NwzeNxErwBpQ"
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+try:
+    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+    genai.configure(api_key=GEMINI_API_KEY)
+    model = genai.GenerativeModel('gemini-1.5-flash')
+except KeyError:
+    st.error("⚠️ Gemini API key not found! Please add GEMINI_API_KEY to your secrets.")
+    st.stop()
+except Exception as e:
+    st.error(f"⚠️ Error configuring Gemini API: {str(e)}")
+    st.stop()
 
 # App configuration
 st.set_page_config(
