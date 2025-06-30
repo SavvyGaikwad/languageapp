@@ -156,14 +156,14 @@ def display_flip_card():
 def add_flip_card_to_sidebar():
     """Add the flip card to the sidebar"""
     st.sidebar.markdown("---")
-    st.sidebar.markdown("### 🎨 Motivation Corner")
+    st.sidebar.markdown("### Puns Corner")
     
     # Display the flip card
     flip_card_html = display_flip_card()
     st.sidebar.markdown(flip_card_html, unsafe_allow_html=True)
     
     # Optional: Add a refresh button to get a new random image
-    if st.sidebar.button("🔄 New Image", help="Get a new motivational image"):
+    if st.sidebar.button("🔄 New Image", help="Get a new image"):
         st.rerun()
 
 def get_random_word_from_subsection(section_name, subsection_name):
